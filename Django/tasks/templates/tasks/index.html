@@ -1,0 +1,33 @@
+{% extends "tasks/layouts.html" %}
+<!--<!DOCTYPE html>-->
+<!--<html lang="eng">-->
+<!--    <head>-->
+<!--        <title>Tasks</title>-->
+<!--    </head>-->
+<!--    <body>-->
+<!--        <ul>-->
+<!--            {% for tasks in tasks %}-->
+<!--                <li>{{ tasks }}</li>-->
+<!--            {% endfor %}-->
+<!--        </ul>-->
+<!--    </body>-->
+<!--</html>-->
+
+<!--ALTERNATE WAY-->
+
+
+
+
+{% block body %}
+        <h1>Tasks</h1>
+        <ul>
+            {% for tasks in tasks %}
+                <li>{{ tasks }}</li>
+            {% empty  %}
+                <li> NO tasks. </li>
+            {% endfor %}
+        </ul>
+<!--        <a href="/tasks/add"> Add a new task</a>-->
+<!--             OR             -->
+        <a href="{% url 'tasks:add' %}"> ADD a new Task</a>
+{% endblock %}

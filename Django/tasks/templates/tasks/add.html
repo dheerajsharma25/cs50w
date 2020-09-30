@@ -1,0 +1,31 @@
+{% extends "tasks/layouts.html" %}
+<!--<!DOCTYPE html>-->
+<!--<html lang="eng">-->
+<!--    <head>-->
+<!--        <title>Tasks</title>-->
+<!--    </head>-->
+<!--    <body>-->
+<!--        <h1>Add Tasks</h1>-->
+<!--        <form>-->
+<!--            <input type="text" name="task">-->
+<!--            <input type="submit">-->
+<!--        </form>-->
+<!--    </body>-->
+<!--</html>-->
+
+<!-- ALTERNATE WAY -->
+
+
+
+
+{% block body %}
+
+        <h1>Add Tasks</h1>
+        <form action="{% url 'tasks:add' %}" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit">
+        </form>
+        <a href="{%url "tasks:index"%}"> Check the Unorder list </a>
+
+{% endblock %}
