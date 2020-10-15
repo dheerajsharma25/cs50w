@@ -5,6 +5,20 @@
         <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
         <title> Hello </title>
+        <style>
+            #app {
+                text-align: center;
+                font-family: sans-serif;
+                }
+            #problem {
+                font-size: 50px;
+            }
+            #winner {
+                font-size: 100px;
+                font-family: caliberi;
+                color: red;
+            }
+        </style>
 
     </head>
     <body>
@@ -24,14 +38,24 @@
                         score: 0
                     };
                 }
-
+                    //render function is for showinf or printing the user screen
                 render() {
+                    //winning the game logic
+
+                    if (this.state.score ===10) {
+                        return(
+                            <div id='winner'>
+                                !! You WON !!
+                            </div>
+                        );
+                }
+
                     return (
                         <div>
-                            <div> {this.state.num1} + {this.state.num2} </div>
+                            <div id="problem"> {this.state.num1} + {this.state.num2} </div>
                             <input onKeyPress = {this.inputKeyPress} onChange={this.updateResponse} value={this.state.response} />
                             <div> Score: {this.state.score}</div>
-                            <!-- <div>You have typed: {this.state.response} </div> -->
+
                         </div>
                     );
                 }
@@ -41,12 +65,17 @@
                         const answer = parseInt(this.state.response);
                         if (answer === this.state.num1 + this.state.num2) {
                             this.setState(state=> ({
-                                score: state.scpre +1
+                                score: state.score +1,
                                 num1: Math.ceil(Math.random() * 10),
-                                num2: Math.ceil(Math.random() * 10)
+                                num2: Math.ceil(Math.random() * 10),
+                                response: ""
                         }));
                     } else {
                         //user got the answer wrong
+                        this.setState(state => ({
+                            score: state.score - 1,
+                            response: ""
+                    }));
                     }
                 }
             }
